@@ -1,16 +1,34 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
- 
+
 import PeoplePage from './src/pages/PeoplePage';
- 
- 
+import PeopleDetailPage from './src/pages/PeopleDatailPage';
+
+import FormPage from './src/pages/FormPage';
+
 const AppNavigator = createStackNavigator({
   Main: {
-    screen: PeoplePage
+    // screen: PeoplePage
+    screen: FormPage
+  },
+  'PeopleDetail': {
+    screen: PeopleDetailPage,
+
+    navigationOptions: ({ navigation }) => {
+      const peopleName = navigation.state.params.people.name.first;
+      return ({
+        title: peopleName,
+        headerTitleStyle: {
+          color: 'white',
+          fontSize: 30
+        }
+      });
+    },    
   }
 }, {
   defaultNavigationOptions: {
     title: 'Pessoas',
+    headerTintColor: 'white',
     headerStyle: {
       backgroundColor: '#6CA2F7',
       borderBottomWidth: 1,
@@ -24,9 +42,9 @@ const AppNavigator = createStackNavigator({
     }
   }
 });
- 
- 
+
+
 const AppContainer = createAppContainer(AppNavigator);
- 
- 
+
+
 export default AppContainer;
