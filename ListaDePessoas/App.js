@@ -4,15 +4,13 @@ import { createStackNavigator } from 'react-navigation-stack';
 import PeoplePage from './src/pages/PeoplePage';
 import PeopleDetailPage from './src/pages/PeopleDatailPage';
 
-import FormPage from './src/pages/FormPage';
 
 const AppNavigator = createStackNavigator({
   Main: {
-    // screen: PeoplePage
-    screen: FormPage
+    screen: PeoplePage
   },
   'PeopleDetail': {
-    screen: PeopleDetailPage,
+     screen: PeopleDetailPage,
 
     navigationOptions: ({ navigation }) => {
       const peopleName = navigation.state.params.people.name.first;
